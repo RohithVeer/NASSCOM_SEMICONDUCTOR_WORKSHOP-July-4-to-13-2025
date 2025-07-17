@@ -1,6 +1,7 @@
 #  NASSCOM Semiconductor Packaging Workshop (July 4–13, 2025)
 
-**Organized by:** VSD Corp. Pvt. Ltd.  
+**Organized by:** VSD Corp. Pvt. Ltd. https://www.vlsisystemdesign.com/
+
 **In collaboration with:** [NASSCOM FutureSkills Prime](https://futureskillsprime.in/)  
 **Mode:** Online (10-Day Hands-on Workshop)  
 **Tools Used:** ANSYS SIwave, ANSYS RedHawk ICEpak, DRC Tools
@@ -59,4 +60,7 @@ Below is the **visual representation of package construction** from **top to bot
 ## Achnowledgements
 
 -[Kunal Ghosh](https://github.com/kunalg123)
+
+-[Tarun Agarwal](https://iitgn.ac.in/faculty/ee/fac-tarun)Professor IIT-Gandhinagar
+
 
