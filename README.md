@@ -1,66 +1,170 @@
-#  NASSCOM Semiconductor Packaging Workshop (July 4–13, 2025)
+#  Semiconductor Packaging: From Basics to 3D Integration
 
-**Organized by:** VSD Corp. Pvt. Ltd. https://www.vlsisystemdesign.com/
-
-**In collaboration with:** [NASSCOM FutureSkills Prime](https://futureskillsprime.in/)  
-**Mode:** Online (10-Day Hands-on Workshop)  
-**Tools Used:** ANSYS SIwave, ANSYS RedHawk ICEpak, DRC Tools
+This repository documents the key technical content from a comprehensive semiconductor packaging workshop. It covers the evolution, types, integration strategies, manufacturing flows, and simulation methods used in modern chip packaging — from wire bonding to full 3D TSV-based systems.
 
 ---
 
-##  Workshop Overview
+##  1. The Role and Evolution of Semiconductor Packaging
 
-This 10-day intensive workshop focused on the complete lifecycle of semiconductor packaging — from fundamentals to advanced simulation and reliability testing. The program emphasized practical exposure using industry-standard EDA tools, covering both design theory and real-world packaging flows such as 2.5D/3D integration, co-design, and qualification techniques.
+Semiconductor packaging transforms fragile silicon dies from foundries (TSMC, Intel, Samsung, Micron, SK Hynix) into robust, electrically connected, and thermally managed components.
 
----
-
-## 🗓️ Daily Activity Summary
-
-| Day     | Topic                                         | Highlights                                                                 |
-|---------|-----------------------------------------------|---------------------------------------------------------------------------|
-| Day 1   | Introduction to Semiconductor Packaging        | Evolution of packaging, OSAT/Foundry ecosystem, packaging types           |
-| Day 2   | Types of Packaging & Advanced Trends           | Wire bonding, flip-chip, WLCSP, 2.5D/3D integration, fan-out BGA          |
-| Day 3   | Package Layout & DRC Analysis                  | Bump layout, DRC rules, substrate planning                                |
-| Day 4   | Chip-Package-PCB Co-design Concepts            | Cross-domain design synchronization, parasitic concerns                   |
-| Day 5   | Signal Integrity (SI) & Power Integrity (PI)   | Impedance matching, PDN planning, decoupling strategies                   |
-| Day 6   | Thermal Analysis & Simulation                  | Heat flow modeling, junction temperature, ANSYS RedHawk ICEpak hands-on   |
-| Day 7   | Reliability & Stress Qualification             | Burn-in, HAST, HTOL testing principles, failure modes                     |
-| Day 8   | Failure Analysis & Yield Optimization          | Root-cause debugging, reliability-driven design changes                   |
-| Day 9   | Hands-on with ANSYS Tools                      | SI/PI simulation, thermal-aware layout, DRC violations                    |
-| Day 10  | Capstone Simulation Project & Q&A              | Final project using ANSYS + expert discussion                             |
+### Key Functions:
+- **Protection:** Guards against moisture, corrosion, and mechanical damage.
+- **Electrical Bridging:** Connects die-to-board and die-to-die signals.
+- **Thermal Management:** Dissipates heat from high-power chips.
+- **Mechanical Integrity:** Enables surface mount compatibility.
 
 ---
 
-##  Semiconductor Package Construction – Visual Stack
+##  2. Types of Packages and Selection Criteria
 
-Below is the **visual representation of package construction** from **top to bottom**, illustrating each physical layer of a typical wire-bonded package.
+###  Foundational Package Structure
 
-| Layer | Description | Image |
-|-------|-------------|-------|
-|  **Mold Compound** | Encapsulates and protects the internal components from mechanical and environmental damage. | ![Mold Compound](./MoldCompound.png) |
-|  **Bondwire** | Thin gold/aluminum wires used to connect the die pads to the substrate/package leads. | ![Bondwire](./Bondwire.png) |
-|  **Die** | The silicon chip that contains the functional circuitry. | ![Die](./Die.png) |
-|  **Die Bond Pad** | Metal pads on the die for electrical interconnection via bonding wires. | ![Die Bond Pad](./DieBondpad.png) |
-|  **Die Attach** | Adhesive or solder layer that secures the die to the substrate. | ![Die Attach](./DieAttach.png) |
-|  **Substrate** | The base platform that supports the die and routes electrical signals to the PCB. | ![Substrate](./Substrate.png) |
+| Layer                         | Description                                              |
+|------------------------------|----------------------------------------------------------|
+| Mold Compound                | Encapsulation against environment                        |
+| Die (Chip)                   | Executes logic/memory functions                          |
+| Die-to-Carrier Interconnects | Wire bonds or flip-chip bumps                            |
+| Carrier (Substrate)          | Signal routing & mechanical support                      |
+| Carrier-to-Board Interconnects | Solder balls, pins                                      |
+| System Board (PCB)           | Integration of multiple packages                         |
 
-> Each of these layers plays a critical role in signal transmission, heat dissipation, and mechanical reliability.
+###  Carrier Material Options
+
+| Material    | Characteristics                        | Usage                      |
+|------------|------------------------------------------|----------------------------|
+| Leadframe  | Metal-based, cost-effective             | Discrete ICs               |
+| Laminate   | Copper routing, flexible                | Consumer electronics       |
+| Ceramic    | Thermally/electrically superior         | Military, aerospace        |
+| Silicon    | High-precision, TSV-compatible          | 2.5D/3D integration        |
+| Glass      | High-density routing                    | Emerging tech              |
+
+###  Mounting/Package Types
+
+| Technology       | Package Type     | Use Case                          |
+|------------------|------------------|-----------------------------------|
+| Through-hole     | DIP, SIP, PGA     | Legacy, large ICs                 |
+| Surface Mount    | SOIC, QFP, QFN    | Analog, digital, RF               |
+| Advanced         | FC-BGA, CSP, SiP  | SoCs, CPUs, chiplets              |
+
+ **Examples**:
+- **CoWoS (NVIDIA GP100)** – Chip-on-Wafer-on-Substrate for AI workloads  
+- **PoP (Qualcomm, Samsung)** – Package-on-Package for compact mobile SoCs
 
 ---
 
-##  Key Outcomes
+##  3. Advanced Packaging and Dimensional Integration
 
-- Learned full-stack packaging flow including DRC, SI/PI, thermal, and reliability analysis  
-- Applied **ANSYS RedHawk ICEpak** and **SIwave** to simulate realistic packaging conditions  
-- Understood co-design challenges in 2.5D/3D and chiplet-based systems  
-- Gained practical insight into stress qualification and root-cause analysis  
-- Completed a hands-on **capstone project** simulating a real-world package
+###  Classification
+
+- **2D**: Single die on substrate  
+- **2.1D/2.3D**: Redistribution & stacked passives  
+- **2.5D**: Dies on interposer (TSV-enabled)  
+- **3D**: Full vertical die stacking with TSVs  
+
+###  Interconnect Techniques
+
+- **RDL (Redistribution Layer)**: Metal layers to re-route I/O
+- **Fan-In WLP**: Bumps stay within die footprint
+- **Fan-Out WLP**: Reconstituted dies with extended I/O area
+- **Flip-Chip**: Die flipped onto substrate using solder bumps
+- **TSV (Through-Silicon Via)**: Vertical inter-die connections for 3D stacking
 
 ---
-## Achnowledgements
 
--[Kunal Ghosh](https://github.com/kunalg123)
+##  4. Semiconductor Supply Chain & ATMP Process
 
--[Tarun Agarwal](https://iitgn.ac.in/faculty/ee/fac-tarun)Professor IIT-Gandhinagar
+###  Stages:
+- **Design**: Fabless design (e.g., NVIDIA, AMD)  
+- **Wafer Fab**: Foundries (e.g., TSMC, Intel)  
+- **ATMP**: OSATs (e.g., ASE, Amkor) handle packaging & testing  
+- **Board Assembly**: ICs mounted to PCBs via SMT  
+- **Product Assembly**: Final systems (phones, servers, etc.)
+
+###  ATMP Facility Layout
+
+- **Offices**: QA, engineering  
+- **Material Storage**: Die, epoxy, substrates  
+- **Cleanroom**: Die attach, molding, flip-chip bonding  
+- **Test Area**: Burn-in, E-test, functional test  
+- **Warehouse**: Final-packaged chips  
+- **Maintenance**: HVAC, safety systems
+
+---
+
+##  5. Manufacturing Flow: From Wafer to Package
+
+###  Key Steps
+
+- **Pre-Prep**: Lamination, back-grinding, dicing  
+- **Die Attach**: Die bonded to substrate with epoxy  
+- **Curing**: Adhesive hardening  
+- **Wire Bonding**: Gold/Cu wire loop bonded  
+- **Singulation**: Sawed into individual packages  
+- **Molding**: Epoxy encapsulation  
+- **Marking**: Laser labeling
+
+###  Flip-Chip Flow
+
+- Bump Formation → Die Placement → Reflow Solder → Underfill → Mold/Mark
+
+###  WLP (Wafer-Level Packaging)
+
+- **Fan-In**: Within die  
+- **Fan-Out**: RDL beyond die boundary
+
+---
+
+##  6. Reliability and Testing
+
+###  Test Flows
+
+- **Wafer Probe**
+- **Package Electrical Test**
+- **Burn-In Test** (High T/V stress)
+- **Final System-Level Test**
+
+###  Burn-In Failure Curve
+
+| Phase           | Description                                 |
+|------------------|---------------------------------------------|
+| Infant Mortality | Caught early via burn-in                   |
+| Useful Life      | Stable performance                         |
+| Wear-Out         | Aging, degradation phase                   |
+
+---
+
+##  7. Package Design and Simulation (ANSYS AEDT)
+
+**Modeled Example:**
+- Die: 3 × 3 × 0.2 mm  
+- Substrate: 5 × 5 × 0.5 mm  
+- Die Attach: 0.1 mm  
+- Mold Compound: 1.2 mm Epoxy-Kevlar  
+- Bond Wires: Gold (JEDEC 4-point profile)
+
+###  Simulation Steps:
+1. Define geometry of each layer  
+2. Assign electrical/thermal properties  
+3. Add bond wires & encapsulation  
+4. Run electrical & thermal simulations  
+
+---
+
+## References
+- Episode1(https://news.skhynix.com/semiconductor-back-end-process-episode-1-understanding-semiconductor-testing/)
+- Episode2(https://news.skhynix.com/semiconductor-back-end-process-episode-2-semiconductor-packaging/)
+- Episode3(https://news.skhynix.com/semiconductor-back-end-process-episode-3-understanding-the-different-types-of-semiconductor-packages/)
+- Episode4(https://news.skhynix.com/semiconductor-back-end-process-episode-4-packages-part-2/)
+- Episode5(https://news.skhynix.com/semiconductor-back-end-process-episode-5-package-design-and-analysis/)
+
+## Acknowledgement
+- [Kunal Ghosh](https://github.com/kunalg123)
+
+- [Tarun Agarwal-Professor-IIT Gandhinagar](https://iitgn.ac.in/faculty/ee/fac-tarun)
+
+- [Abhimanyu Singh](https://www.linkedin.com/in/abhimanyu-singh-633737a/)
+
+
 
 
